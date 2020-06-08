@@ -14,10 +14,7 @@ namespace WLTWeb.Controllers
         {
             return View();
         }
-        //public ActionResult getMenu()
-        //{
-        //    var v = from i in 
-        //}
+        
 
         public ActionResult About()
         {

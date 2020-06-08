@@ -3,34 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using WLTWeb.Models;
 
 namespace WLTWeb.Controllers
 {
-    public class HomeController : Controller
+    public class TempController : Controller
     {
-        
+        // GET: Temp
+        Model1 _db = new Model1();
         public ActionResult Index()
         {
             return View();
         }
-        //public ActionResult getMenu()
-        //{
-        //    var v = from i in 
-        //}
-
-        public ActionResult About()
+        public ActionResult getMenu()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            var v = from t in _db.Menu
+                    where t.hide == true
+                    orderby t.order ascending
+                    select t;
+            return PartialView(v.ToList());
         }
     }
 }
